@@ -11,16 +11,19 @@ app.config.update(
 
 @app.route('/', methods=['GET'])
 def about():
-    return "Welcome to Camera-server!"
+    return "Welcome to camera-server!"
 
 
 @app.route('/image', methods=['POST'])
-def get_image():
+def process_image():
+    resp = {"msg": "No se adjunto imagen"}
     req_data = request.get_json()
 
-    if 'data' in req_data:
-        img = convert_to_image(req_data['data'])
-        print("New size: ", img.size)
-        img.close()
+    if req_data:
+        if 'data' in req_data:
+            img_data = convert_to_image(req_data['data'])
+            resp["size"] = img_data["size"]
+            resp["msg"] = img_data["msg"]
+            resp["data"] = img_data["data"]
 
-    return {"msg": "OK!"}
+    return resp
