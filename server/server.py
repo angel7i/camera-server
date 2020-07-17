@@ -1,7 +1,7 @@
 from flask import Flask, request
 
-from data import convert_to_image
-from model import classify_image
+from server.data import convert_to_image
+from server.model import classify_image
 
 
 app = Flask(__name__)
