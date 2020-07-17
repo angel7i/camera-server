@@ -1,8 +1,7 @@
-import tensorflow as tf
 import numpy as np
 
 from tensorflow import keras
-from keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
 
 
 model = keras.models.load_model('model.h5')
