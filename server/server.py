@@ -1,6 +1,7 @@
 from flask import Flask, request
 
-from server.input_model import convert_to_image
+from data import convert_to_image
+from model import classify_image
 
 
 app = Flask(__name__)
@@ -22,8 +23,10 @@ def process_image():
     if req_data:
         if 'data' in req_data:
             img_data = convert_to_image(req_data['data'])
-            resp["size"] = img_data["size"]
+            label = classify_image(img_data)
+            resp["msg"] = label
+            """ resp["size"] = img_data["size"]
             resp["msg"] = img_data["msg"]
-            resp["data"] = img_data["data"]
+            resp["data"] = img_data["data"] """
 
     return resp
