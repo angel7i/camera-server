@@ -14,6 +14,7 @@ def convert_to_image(data: str):
     img = img.resize((150, 150))
     print("New size: ", img.size)
     img_data["msg"] = "Imagen recibida"
+    data = None
 
     """  img = img.convert("1")
 

@@ -24,9 +24,9 @@ def process_image():
         if 'data' in req_data:
             img_data = convert_to_image(req_data['data'])
             label = classify_image(img_data)
+            img_data.close()
             resp["msg"] = label
-            """ resp["size"] = img_data["size"]
-            resp["msg"] = img_data["msg"]
-            resp["data"] = img_data["data"] """
+            resp["size"] = img_data["size"]
+            #resp["data"] = img_data["data"]
 
     return resp
